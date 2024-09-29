@@ -14,7 +14,9 @@ BiAEImpute can be used via the command line. The following instructions will gui
 ## Usage
 ### Installing
 You can clone this directory to install the latest GitHub version:
+```bash
 git clone https://github.com/LiuXinyuan6/BiAEImpute.git
+```
 ### Usage
 #### 1.stage of training
 ```bash
