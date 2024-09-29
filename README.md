@@ -10,7 +10,7 @@ We proposed a bidirectional autoencoder-based model (BiAEImpute) for dropout imp
 **Usoskin**: The Usoskin dataset has 25334 genes and 622 cells, representing four cell types from lumbar dorsal root ganglion tissue (NF, NP, PEP, TH), and is available in the NCBI repository under the GEO accession number GSE59739.<br>
 **Klein**: The Klein dataset is a longitudinal dataset containing 24175 genes and 2717 cells from embryonic stem cells, sampled at four time points (day 0, day 2, day 4, day 7), and is available in the NCBI repository under the GEO accession number GSE65525.
 # Getting Started
-BiAEImpute can be used either via the command line or as a Python package. The following instructions will guide you through quickly setting it up and running on your local machine.
+BiAEImpute can be used via the command line. The following instructions will guide you through quickly setting it up and running on your local machine.
 ## Usage
 ### Installing
 You can clone this directory to install the latest GitHub version:
