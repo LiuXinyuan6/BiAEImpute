@@ -6,8 +6,8 @@ We proposed a bidirectional autoencoder-based model (BiAEImpute) for dropout imp
 
 # Datasets
 **Zeisel**: The Zeisel dataset contains 19,972 genes and 3,005 cells, representing seven cell types from cerebral cortex tissue (interneurons, pyramidal SS, pyramidal CA1, oligodendrocytes, microglia, endothelial-mural, and astrocytes-ependymal), and is available in the NCBI repository under the GEO accession number GSE60361.<br>
-**Romanov**: The Romanov dataset consists of 24341 genes and 2881 cells across seven cell types from hypothalamus tissue (oligodendrocytes, astrocytes, ependymal, microglia, vsm, endothelial, neurons), and is available in the NCBI repository under the GEO accession number GSE74672.
-**Usoskin**: The Usoskin dataset has 25334 genes and 622 cells, representing four cell types from lumbar dorsal root ganglion tissue (NF, NP, PEP, TH), and is available in the NCBI repository under the GEO accession number GSE59739.
+**Romanov**: The Romanov dataset consists of 24341 genes and 2881 cells across seven cell types from hypothalamus tissue (oligodendrocytes, astrocytes, ependymal, microglia, vsm, endothelial, neurons), and is available in the NCBI repository under the GEO accession number GSE74672.<br>
+**Usoskin**: The Usoskin dataset has 25334 genes and 622 cells, representing four cell types from lumbar dorsal root ganglion tissue (NF, NP, PEP, TH), and is available in the NCBI repository under the GEO accession number GSE59739.<br>
 **Klein**: The Klein dataset is a longitudinal dataset containing 24175 genes and 2717 cells from embryonic stem cells, sampled at four time points (day 0, day 2, day 4, day 7), and is available in the NCBI repository under the GEO accession number GSE65525.
 # Getting Started
 BiAEImpute can be used either via the command line or as a Python package. The following instructions will guide you through quickly setting it up and running on your local machine.
