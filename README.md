@@ -2,6 +2,8 @@
 BiAEImpute: Enhancing Dropout Imputation in Single-Cell RNA-seq with Bidirectional Autoencoders
 # Overview
 We proposed a bidirectional autoencoder-based model (BiAEImpute) for dropout imputation in scRNA-seq dataset. This model employs row-wise autoencoders and column-wise autoencoders to respectively learn cellular and genetic features during the training phase. The synergistic integration of these learned features is then utilized for the imputation of missing values, enhancing the robustness and accuracy of the imputation process.
+![figure_1](https://github.com/user-attachments/assets/97b89162-41a3-4b22-8da7-0504b9f7e641)
+
 # Datasets
 **Zeisel**: The Zeisel dataset contains 19,972 genes and 3,005 cells, representing seven cell types from cerebral cortex tissue (interneurons, pyramidal SS, pyramidal CA1, oligodendrocytes, microglia, endothelial-mural, and astrocytes-ependymal), and is available in the NCBI repository under the GEO accession number GSE60361.<br>
 **Romanov**: The Romanov dataset consists of 24341 genes and 2881 cells across seven cell types from hypothalamus tissue (oligodendrocytes, astrocytes, ependymal, microglia, vsm, endothelial, neurons), and is available in the NCBI repository under the GEO accession number GSE74672.
