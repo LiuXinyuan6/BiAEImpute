@@ -33,9 +33,9 @@ python ./infer.py --datasets Zeisel.csv --mask_ratio 0.4
 ### Verify the experimental results of the Zeisel dataset with 40% dropout in this paper.
 ```python
     # Verify the experimental results of PCC、R²、RMSE
-    data_non_path = "mask40_Zeisel.csv"
-    imputed_data_path = "imputation.csv"
-    original_data_path = "normalization_Zeisel.csv"
+    data_non_path = "..\data\mask40_Zeisel.csv"
+    imputed_data_path = "..\data\imputation.csv"
+    original_data_path = "..\data\\normalization_Zeisel.csv"
 
     data_non = pd.read_csv(data_non_path, sep=',', index_col=0).values
     imputed_data = pd.read_csv(imputed_data_path, sep=',', index_col=0).values
@@ -75,13 +75,13 @@ python ./infer.py --datasets Zeisel.csv --mask_ratio 0.4
 ```
 ```python
     # 插补前的
-    clusterResults_non = pd.read_csv("clustering_non-Imputed.csv",index_col=0)
+    clusterResults_non = pd.read_csv("..\data\clustering_non-Imputed.csv",index_col=0)
     clusterResults_non = clusterResults_non.values.squeeze()
     # 插补后的
-    clusterResults = pd.read_csv("clustering_imputation.csv",index_col=0)
+    clusterResults = pd.read_csv("..\data\clustering_imputation.csv",index_col=0)
     clusterResults = clusterResults.values.squeeze()
     # 真实标签
-    labels = pd.read_csv("labels.csv",index_col=0)
+    labels = pd.read_csv("..\data\labels.csv",index_col=0)
     labels = labels.values.squeeze()
 
     ari_non = adjusted_rand_score(labels,clusterResults_non)
