@@ -30,5 +30,86 @@ python ./train.py --datasets Zeisel.csv --mask_ratio 0.4 --normalization True --
 ```bash
 python ./infer.py --datasets Zeisel.csv --mask_ratio 0.4
 ```
+### Verify the experimental results of the Zeisel dataset with 40% dropout in this paper.
+```python
+    # Verify the experimental results of PCC、R²、RMSE
+    data_non_path = "mask40_Zeisel.csv"
+    imputed_data_path = "imputation.csv"
+    original_data_path = "normalization_Zeisel.csv"
+
+    data_non = pd.read_csv(data_non_path, sep=',', index_col=0).values
+    imputed_data = pd.read_csv(imputed_data_path, sep=',', index_col=0).values
+    original_data = pd.read_csv(original_data_path, sep=',', index_col=0).values
+
+    # PCCs
+    pccs_non = pearson_corr(data_non,original_data)
+    pccs = pearson_corr(imputed_data,original_data)
+
+    # RMSE
+    rmse_non = RMSE(data_non,original_data)
+    rmse = RMSE(imputed_data,original_data)
+
+    # R²
+    r_squared_example_non = calculate_r_squared(data_non, imputed_data)
+    r_squared_example = calculate_r_squared(original_data, imputed_data)
+
+    print("===============")
+    print("插补前pccs={:.3f}".format(pccs_non))
+    print("插补前r^2={:.3f}".format(r_squared_example_non))
+    print("插补前rmse={:.3f}*10e3".format(rmse_non*1000))
+    print("===============")
+    print("插补后pccs={:.3f}".format(pccs))
+    print("插补后r^2={:.3f}".format(r_squared_example))
+    print("插补后rmse={:.3f}*10e3".format(rmse*1000))
+```
+```python
+    # print
+    ===============
+    插补前pccs=0.771
+    插补前r^2=0.665
+    插补前rmse=6.549*10e3
+    ===============
+    插补后pccs=0.918
+    插补后r^2=0.841
+    插补后rmse=4.086*10e3
+```
+```python
+    # 插补前的
+    clusterResults_non = pd.read_csv("clustering_non-Imputed.csv",index_col=0)
+    clusterResults_non = clusterResults_non.values.squeeze()
+    # 插补后的
+    clusterResults = pd.read_csv("clustering_imputation.csv",index_col=0)
+    clusterResults = clusterResults.values.squeeze()
+    # 真实标签
+    labels = pd.read_csv("labels.csv",index_col=0)
+    labels = labels.values.squeeze()
+
+    ari_non = adjusted_rand_score(labels,clusterResults_non)
+    nmi_non = normalized_mutual_info_score(labels,clusterResults_non)
+    purity_non = getPurityScore(labels,clusterResults_non)
+
+    ari = adjusted_rand_score(labels,clusterResults)
+    nmi = normalized_mutual_info_score(labels,clusterResults)
+    purity = getPurityScore(labels,clusterResults)
+
+    print("插补前ari={:.3f}".format(ari_non))
+    print("插补前nmi={:.3f}".format(nmi_non))
+    print("插补前purity={:.3f}".format(purity_non))
+    print("===============")
+    print("插补后ari={:.3f}".format(ari))
+    print("插补后nmi={:.3f}".format(nmi))
+    print("插补后purity={:.3f}".format(purity))
+```
+```python
+    # print
+    插补前ari=0.473
+    插补前nmi=0.528
+    插补前purity=0.688
+    ===============
+    插补后ari=0.860
+    插补后nmi=0.829
+    插补后purity=0.934
+```
+
 
 
