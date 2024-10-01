@@ -1,15 +1,9 @@
 import numpy as np
 import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 
 def RMSE(imputed_data, original_data):
     return np.sqrt(np.mean((original_data - imputed_data)**2))
-
-
-
-
 
 def pearson_corr(imputed_data, original_data):
     Y = original_data
@@ -21,27 +15,43 @@ def pearson_corr(imputed_data, original_data):
     return corr
 
 
-
 def calculate_r_squared(y_true, y_pred):
     ss_res = np.sum((y_true - y_pred) ** 2)
     ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
     r_squared = 1 - (ss_res / ss_tot)
     return r_squared
 
+
+
 if __name__ == '__main__':
-    imputed_data_path = r"Usoskin_imputation.csv"
-    original_data_path = r"Usoskin.csv"
+
+
+    data_non_path = "..\data\mask40_Zeisel.csv"
+    imputed_data_path = "..\data\imputation.csv"
+    original_data_path = "..\data\\normalization_Zeisel.csv"
+
+    data_non = pd.read_csv(data_non_path, sep=',', index_col=0).values
     imputed_data = pd.read_csv(imputed_data_path, sep=',', index_col=0).values
-    original_data = pd.read_csv(original_data_path, sep=',', index_col=0).values #header=None, index_col=False
-    print(imputed_data.shape)
-    print(original_data.shape)
+    original_data = pd.read_csv(original_data_path, sep=',', index_col=0).values
 
+
+    # 计算PCCs
+    pccs_non = pearson_corr(data_non,original_data)
     pccs = pearson_corr(imputed_data,original_data)
-    print("pccs=",pccs)
 
+    # 计算RMSE
+    rmse_non = RMSE(data_non,original_data)
     rmse = RMSE(imputed_data,original_data)
-    print("rmse=",rmse)
-    
-    r_squared_example = calculate_r_squared(original_data, imputed_data)
-    print("r^2=",r_squared_example)
 
+    # 计算R²
+    r_squared_example_non = calculate_r_squared(data_non, imputed_data)
+    r_squared_example = calculate_r_squared(original_data, imputed_data)
+
+    print("===============")
+    print("插补前pccs={:.3f}".format(pccs_non))
+    print("插补前r^2={:.3f}".format(r_squared_example_non))
+    print("插补前rmse={:.3f}*10e3".format(rmse_non*1000))
+    print("===============")
+    print("插补后pccs={:.3f}".format(pccs))
+    print("插补后r^2={:.3f}".format(r_squared_example))
+    print("插补后rmse={:.3f}*10e3".format(rmse*1000))

@@ -1,14 +1,9 @@
-from scipy.stats import kendalltau
 import pandas as pd
 
-
-real_times = pd.read_csv(r"traj_time_Klein_imputation.csv")
+real_times = pd.read_csv(r"..\data\traj_time_imputation.csv")
 real_times = real_times.values.flatten()
-inferred_times = pd.read_csv(r"traj_time_Klein.csv")
+inferred_times = pd.read_csv(r"..\data\traj_time_Klein.csv")
 inferred_times = inferred_times.values.flatten()
-
-
-
 
 dat1 = real_times
 dat2 = inferred_times
@@ -22,4 +17,4 @@ for i in range(len(dat1)):
             d = d + 1
 k_tau = (c - d) * 2 / len(dat1) / (len(dat1) - 1)
 
-print('k_tau = {0}'.format(k_tau))
+print('k_tau = {:.3f}'.format(k_tau))
